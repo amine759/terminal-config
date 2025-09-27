@@ -126,10 +126,4 @@ bind '"\e[B": history-search-forward'   # Down arrow to move forward in history
 
 . "$HOME/.local/bin/env"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/path.bash.inc' ]; then . '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/completion.bash.inc' ]; then . '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/completion.bash.inc'; fi
-
 alias kitty-reload='kill -SIGUSR1 $(pgrep kitty)'
