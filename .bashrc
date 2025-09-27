@@ -40,27 +40,19 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+# Color definitions for red theme
+RED='\[\033[0;31m\]'
+BRIGHT_RED='\[\033[1;31m\]'
+DARK_RED='\[\033[38;5;88m\]'
+ORANGE='\[\033[0;33m\]'
+BROWN='\[\033[0;33m\]'
+PINK='\[\033[1;35m\]'
+WHITE='\[\033[1;37m\]'
+GRAY='\[\033[0;37m\]'
+RESET='\[\033[0m\]'
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+# Option 1: Bold red theme
+export PS1="${DARK_RED}\u${DARK_RED}@${DARK_RED}\h${RESET}:${ORANGE}\w${BRIGHT_RED}\$${RESET} "
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -134,5 +126,10 @@ bind '"\e[B": history-search-forward'   # Down arrow to move forward in history
 
 . "$HOME/.local/bin/env"
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/path.bash.inc' ]; then . '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/completion.bash.inc' ]; then . '/home/rugal/Documents/achgal/report-generation/google-cloud-sdk/completion.bash.inc'; fi
 
 alias kitty-reload='kill -SIGUSR1 $(pgrep kitty)'
